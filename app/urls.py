@@ -1,10 +1,13 @@
+from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
 
-from app.views import HomeTemplateView, AuthorFormView, PostCreateView, AuthorListView
+from app.views import reviewView
 
 urlpatterns = [
-    path('', HomeTemplateView.as_view(),name='home'),
-    path('author_form', AuthorFormView.as_view(),name='author-form'),
-    path('new_post', PostCreateView.as_view(),name='new_post'),
-    path('authors', AuthorListView.as_view(),name='authors'),
+    path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='app/home.html'), name='home'),
+    path('home', TemplateView.as_view(template_name='app/home.html'), name='home'),
+    path('review', reviewView, name='review'),
+    path('about', TemplateView.as_view(template_name='app/about-us.html'), name='about'),
 ]

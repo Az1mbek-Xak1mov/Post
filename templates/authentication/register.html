@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <main class="container">
+        <!-- Register Section -->
+        <section id="register" class="section">
+            <div class="form-container">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Ro'yxatdan O'tish</h2>
+                <form action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="fullname">To'liq ism</label>
+                        <input type="text" id="fullname" name="fullname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email manzil</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Parol</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Parolni tasdiqlang</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Ro'yxatdan o'tish
+                    </button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Allaqachon hisobingiz bormi?
+                    <a href="{% url 'login' %}" onclick="showSection('login')" style="color: #667eea;">Bu yerda
+                        kiring</a>
+                </p>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+
+

@@ -1,0 +1,23 @@
+<header>
+    <nav class="container">
+        <div class="logo"><a class="logo" style="text-decoration: none" href="{% url 'home' %}">📚 Kitoblar Dunyosi</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
+            <li><a href="{% url 'review' %}">Kitob sharhlari</a></li>
+            <li><a href="{% url 'about' %}">Biz haqimizda</a></li>
+        </ul>
+        {% if  request.user.is_authenticated %}
+            <div class="auth-buttons" style="display: flex; align-items: center; gap: 20px">
+                <p class="user-name">{{ user.fullname }}</p>
+                <a href="{% url 'logout' %}" class="btn btn-primary">chiqish</a>
+            </div>
+        {% else %}
+            <div class="auth-buttons">
+                <a href="{% url 'login' %}" class="btn btn-secondary">Kirish</a>
+                <a href="{% url 'register' %}" class="btn btn-primary">Ro'yxatdan o'tish</a>
+            </div>
+        {% endif %}
+
+    </nav>
+</header>
